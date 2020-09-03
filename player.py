@@ -1,5 +1,10 @@
 from yaml import load as yload
-from getch import getch
+weareonwindows=0
+try:
+    from getch import getch
+except ModuleNotFoundError:
+    weareonwindows=1
+    import msvcrt
 import gameInteractions,menu
 
 f=open("tiles.txt")
@@ -29,7 +34,7 @@ class Player:
         print("?")
         inChr=''
         while (inChr not in (list(self.actions ) ) ):
-            inChr=getch()
+            inChr=msvcrt.getch().decode('ASCII')
         self.action(inChr)
 
     def moveWorld(self,direction):
@@ -50,7 +55,7 @@ class Player:
             self.worldPos = self.myWorld[self.where[0]][self.where[1]]
             self.pos[1]=1
         self.worldPos.loadData(self.TILE_TABLE)
-        
+
     def showInventory(self):
         opts={}
         for a in self.inv:

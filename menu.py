@@ -1,5 +1,10 @@
 from os import system
-from getch import getch
+weareonwindows=0
+try:
+    from getch import getch
+except ModuleNotFoundError:
+    weareonwindows=1
+    import msvcrt
 class Menu:
     def __init__(self,menu_name,opts,cancel=False):
         self.name = menu_name
@@ -13,5 +18,5 @@ class Menu:
             print("%s"%i)
         inChr=''
         while (inChr not in (list(self.options.values() ) ) ):
-            inChr=getch()
+            inChr=msvcrt.getch().decode('ASCII')
         return inChr

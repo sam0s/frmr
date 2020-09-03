@@ -6,6 +6,7 @@ import menu
 import player
 from shutil import rmtree
 from os import mkdir
+import msvcrt
 
 print ("... prefabs")
 
@@ -16,7 +17,7 @@ br=world.loadLevel("barn","Inside Barn")
 fo=world.loadLevel("fieldOutskirts","Field Outskirts")
 lf=world.loadLevel("fieldl","Field")
 te=world.loadLevel("the_exchange","Jack's Drop and Stop")
-            
+
 theWorld = [[lf,fh,br],
             [fo,of,ob],
             [te,0,0]]
