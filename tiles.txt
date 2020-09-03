@@ -1,0 +1,1 @@
+{"seed_turnip":["t",600],"seed_carrots":["c",600],"seed_pea":["p",1200],"seed_tomato":["m",1200],"seed_pepper":["h",1800]}
