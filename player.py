@@ -14,6 +14,7 @@ f.close()
 class Player:
     def __init__(self,myWorld,where):
         self.pos=[]
+        self.goingtohell=0
         self.TILE_TABLE=TILE_TABLE
         self.inv={}
         for i in self.TILE_TABLE:
@@ -58,6 +59,8 @@ class Player:
 
     def showInventory(self):
         opts={}
+        print(self.inv)
+        input()
         for a in self.inv:
             opts["%s (%s)"%(a,self.inv[a])]="x"
         m=menu.Menu("Your inventory.",opts,True)

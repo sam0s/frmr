@@ -13,13 +13,18 @@ def tile(tile,player):
     for i in list(player.TILE_TABLE.values()):
         if tile in i:
             tile_name = get_key(i,player.TILE_TABLE)
-            time = player.worldPos.dataAt(*player.pos)[3] - timegm(gmtime())
-            ##MAKE THIS WORK
-            ##SHOULD REMOVE TILE FROM GROUND, ACTUALLY DOESN'T
+            #time = player.worldPos.dataAt(*player.pos)[3] - timegm(gmtime())
             m=menu.Menu(f"Remove this {tile_name} from the ground?",{"(Y)es":"y","(N)o":"n"})
             choice=m.show()
             if choice == "y":
-                print("remove?")
+                toBeRemoved = player.worldPos.dataAt(player.pos[0],player.pos[1])
+                index=0
+                for i in player.worldPos.dat:
+                    if i == toBeRemoved:
+                        player.worldPos.dat.pop(index)
+                        player.worldPos.tiles[player.pos[0]][player.pos[1]]='*'
+                    index+=1
+                player.worldPos.saveData(None,player.TILE_TABLE)
             return
 
         if tile.lower() in i and tile.lower()!=tile:

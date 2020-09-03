@@ -9,24 +9,26 @@ class WorldSpace:
         self.tiles = tiles
         self.name = name
         self.dat=[]
-        
+
     def dataAt(self,x,y):
         for i in self.dat:
             if i[1] == x:
                 if i[0] == y:
                     return i
-                    
-                    
+
+
     def saveData(self,new,tiles):
         try:
-            self.dat.append(new)
+            if new!=None:
+                self.dat.append(new)
             file = open("save//levelData//"+self.loc+".dat",'w')
             print(self.dat,file=file)
             file.close()
             self.loadData(tiles)
+
         except FileNotFoundError:
             pass
-    
+
     def loadData(self,tiles):
         try:
             file = open("save//levelData//"+self.loc+".dat",'r')
@@ -102,8 +104,3 @@ class shopInterface:
         print(f"Store -- {buysell}")
         print(f"Welcome! What would you like to {buysell}?")
         print(itemlist)
-        
-        
-        
-        
-        
